@@ -9,4 +9,5 @@ export interface OrderI {
   typeCommande: string;
   idClient: number;
   notes: string;
+  id: number;
 }
