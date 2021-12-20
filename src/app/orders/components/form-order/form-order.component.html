@@ -1,18 +1,25 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <div class="form-group">
     <label for="label">Nom de la commande</label>
     <input type="text" class="form-control" id="label" formControlName="label">
+    <div class="alert alert-danger" *ngIf="form.controls['label'].invalid && form.controls['label'].touched">
+      champ invalide
+    </div>
   </div>
 
   <div class="form-group">
     <label for="typeCommande">type de la commande</label>
     <input type="text" class="form-control" id="typeCommande" formControlName="typeCommande">
+    <div class="alert alert-danger"
+      *ngIf="form.controls['typeCommande'].invalid && form.controls['typeCommande'].touched">
+      champ invalide
+    </div>
   </div>
 
   <div class="form-group">
     <label for="idClient">n° de client</label>
-    <input type="text" class="form-control" id="idClient" formControlName="idClient">
+    <input type="number" class="form-control" id="idClient" formControlName="idClient">
   </div>
 
   <div class="form-group">
@@ -42,5 +49,5 @@
     <textarea class="form-control" id="notes" formControlName="notes"></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
 </form>

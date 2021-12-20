@@ -25,4 +25,8 @@ export class OrdersService {
     obj.statut = state;
     return this.update(obj);
   }
+
+  public add(item: Order): Observable<Order> {
+    return this.httpClient.post<Order>(`${this.urlApi}/orders`, item);
+  }
 }
